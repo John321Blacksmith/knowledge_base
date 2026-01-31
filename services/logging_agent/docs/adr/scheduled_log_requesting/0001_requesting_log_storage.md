@@ -59,13 +59,25 @@ a paginated list of logs within a specified time window.
 - No need to either access persistent log storage or a messaging stream. Just use their optimized API.
 - Access to log storage is controlled by the backend of the logging service.
 - The API andpoint already has parameters of time and pagination.
+- Even if the NATS server may be replaced by another solution in the future, the API is always present.
 * ❌  Cons
 - The client can only fetch the logs with a limited set of fields.
 - Currently, the logs which API provides, do not have a field of the service name. Instead, there's just service ID,
   so the grouping log entites by services process will take more steps.
   
 ## 💡 Decision
-What did you choose, and why?
+Based on the analysis, the option 4 was taken.
+### Reasons
+- The most straightforward implementation.
+- Reliability of data, serialized and presented by the **logging service**.
+- Several queries for corresponding services are harmless to their DB.
+- Opportunity to improve the consumer of the **logging agent**
+  if one of the other options has been reconsidered later.
 
 ## ⚠️ Consequences
-Good, bad, and neutral outcomes of this choice.
+- The consumer will be adopted for sending requests to the **logging service**.
+- At specified time window, the consumer will iterate over the list of service
+  IDs and send requests to get the corresponding logs.
+- Since there there may have been different mapping of services and their IDs on
+  two databases, log storage and reports, the **logging agent** will have a map
+  of services and their IDs, synchronized with database of **logging service**.

@@ -5,7 +5,7 @@
 * Created at: 2026-01-30
 
 ## Status
-Accepted | **Proposed** | Deprecated
+**Accepted** | Proposed | Deprecated
 
 ## Context
 Within the specified time window, **logging agent** requests a list of logs from the logs storage.

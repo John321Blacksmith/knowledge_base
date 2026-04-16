@@ -47,10 +47,12 @@ or an auditor has to check how well different application
 systems work by inspecting their events. The application
 is like an entire living creature with the encapsulated
 systems inside where each one has its own state.
+Every system emits some event records that show what's
+happening when an entire application deals with a single
+request -> action(that morning jump up).
 
 
-
-When several services take part in processing
+As mentioned above, when several services take part in processing
 user's request, each of them has its own history
 of work over it. All the processes happen during
 service work are recorded as events: `logs`. The
@@ -59,6 +61,15 @@ about state of the process, information about
 user request, event origin, a custom message
 where the nature of event is described by the dev
 and a log severity that indicates type of event.
+The logs are then collected and analyzed, just like
+the therapist does to the patient's past events, but
+instead of the therapist, the log analyzer does it.
+The analyzed logs are formed to reports and associated
+with a particular system. Every system is known for its
+performance and behaviour and, based on report data,
+can be treated by either system administrator or an audit
+accordingly.
+
 Generally, based on the OLTP standard, the log object
 with its meta and body looks like:
 

@@ -8,11 +8,16 @@ Here I need to clarify what a logging agnt is and
 kind of problems the log classification service will solve.
 
 ## Decision
+As known, the service stores all the logs locally
+and in order to see the ones, the local log storage
+has to be checked by hands, so the sytem administrator
+connects to the host of one of the services and checks the logs.
 In terms of distributed services, there may've been lots of
 such checks, so the fellow admin dies from exhaustion.
 Why does the admin care about the logs?
 Well, to see the importance of logs, let's conjure up
-an example:
+an example
+```
 The therapist diagnoses his patients by tracking their state.
 State of the patient is defined by a sequence of events
 that take place in his body when he performs some action.
@@ -35,7 +40,14 @@ The patient is known to have some issiues or he is
 healthy. After some research, the therapist sees, the person
 may be prone to some chronic diseases or to have some bad potential issues.
 So, if he sees a potential danger, as a result of analyzis, he makes
-some steps to tackle that issue. 
+some steps to tackle that issue.
+```
+So about the applications. The system administrator
+or an auditor has to check how well different application
+systems work by inspecting their events. The application
+is like an entire living creature with the encapsulated
+systems inside where each one has its own state.
+
 
 
 When several services take part in processing
@@ -67,13 +79,6 @@ with its meta and body looks like:
     "resource": "an origin where the log is instantiated"
 }
 ```
-
-As known, the service stores all the logs locally
-and in order to see the ones, the local log storage
-has to be checked by hands, so the sytem administrator
-connects to the host of one of the services and checks the logs.
-
-
 
 * ✅ 
 

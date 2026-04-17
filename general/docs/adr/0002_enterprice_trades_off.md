@@ -21,10 +21,10 @@ we like. But there are already some well developed platforms
 
 ## Considered options
 ### Option 1 - Use the official observability platforms
-- [Datadog]('https://www.datadoghq.com/)
-- [Splunk]('https://embargo.splunk.com/)
-- [Grafana Cloud]('https://grafana.com/products/cloud/')
-- [Dynatrace]('https://www.dynatrace.com/')
+- [Datadog](https://www.datadoghq.com/)
+- [Splunk](https://embargo.splunk.com/)
+- [Grafana Cloud](https://grafana.com/products/cloud/)
+- [Dynatrace](https://www.dynatrace.com/)
 
 ##### ✅ Pros
 - Minimal time for integration;
@@ -33,8 +33,8 @@ we like. But there are already some well developed platforms
 - There are many communities and product-oriented support worldwide;
 - Stable development and big expertice;
 - Some of the platforms support AI-based work;
-- Telemetry is processed according to the [OTLP protocol]('https://opentelemetry.io/docs/specs/otlp/');
-- The platforms, such as [Datadog]('https://www.datadoghq.com/) enable great data visualization;
+- Telemetry is processed according to the [OTLP protocol](https://opentelemetry.io/docs/specs/otlp/');
+- The platforms, such as [Datadog](https://www.datadoghq.com/) enable great data visualization;
 
 ##### ❌ Cons
 - The tools are not free;

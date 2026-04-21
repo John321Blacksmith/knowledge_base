@@ -11,31 +11,37 @@ Accepted | **Proposed** | Deprecated
 Based on the research over different alternatives,
 a main picture was drawn.
 
-## The essence of the app
-#### Verbose
-1. `Exporter` *sends* **logs** to `Collector`                         [data migration]
-
-2. `Collector` *gathers* the **logs**                                 [data migration]
-
-3. `Collector` *structures* the **logs**                              [data modification]
-
-4. `Collector` *sends* the **structured logs** to `Analyzer`          [data migration]
-
-5. `Classifier` *performs* cleansing of the **structured logs**       [data modification]
-
-6. `Classifier` *evaluates* the **analyzable data** to **results**    [data modification]
-
-7. `Classifier` *formats* the **results** to **reports**              [data modification]
-
-8. `Classifier` *associates* the **reports** with the services        [data modification]
-
-9. `Classifier` *stores* the **results** in the database              [data migration]
 
 #### Basic Descriptive Layers
-1) Application ----- Observer
-2) Application ----- Observer[Exporter ----- LoggingService]
-3) Application ----- Exporter ----- LoggingService[Collector ----- Analyzer ----- Presenter]
-4) Application ----- Exporter ----- Collector ----- Analyzer ----- Presenter[Repo ----- Server ----- API Interface]
-5) Application ----- Exporter ----- Collector ----- Analyzer ----- Repo ----- Server ----- API Interface ----- Client Dashboard
+1) Application ----- ObservingSystem
+2) Application ----- ObservingSystem[Exporter --- Aggregation]
+3) Application ----- Exporter ----- Aggregation[Collector --- Refinery --- AnalysisEngine --- DataRecording --- Presenter]
+4) Application ----- Exporter ----- Collector ----- Refinery[Cleanser --- Transformer] ----- AnalysisEngine ----- DataRecording[StorageManager --- Repository] ----- Presenter
+5) Application ----- Exporter ----- Collector ----- Cleanser ----- Transformer ----- AnalysisEngine ----- StorageManager ----- Repository ----- Presenter
 
-#### 
+
+## The essence of the app
+#### Non Verbose
+1. `ObservingSystem` *receives* the **forwarded logs** from `Application`
+2. `ObservingSystem` *aggregates* the **logs**
+3. `ObservingSystem` *presents* the **results** to `Client`
+
+#### Verbose
+
+1. A service from the `Application` *emits* the **log**
+
+2. The **log** is *exported* to the MQ by a dedicated `Exporter`
+
+3. `Collector` *gathers* and *forwards* the **exported logs** to the `Cleanser`
+
+4. `Cleanser` *removes* noice and inconsistency from **forwarded logs** and *sends* to the `Transformer`
+
+5. `Transformer` *formats* the **clean logs** to **analyzable format** and *sends* to the `AnalysisEngine`
+
+6. `AnalysisEngine` *evaluates* the **analyzable logs** and *makes* **reports**
+
+7. `AnalysisEngine` *sends* the **reports** to the `StorageManager`
+
+8. `StorageManager` *stores* the **reports** in a persistent database
+
+9. The **saved records** are *presented* by the `Presenter` to an external client

@@ -19,7 +19,7 @@ a main picture was drawn.
 
 3. `Collector` *structures* the **logs**                              [data modification]
 
-4. `Collector` *sends* the **structured logs** to `Classifier`        [data migration]
+4. `Collector` *sends* the **structured logs** to `Analyzer`          [data migration]
 
 5. `Classifier` *performs* cleansing of the **structured logs**       [data modification]
 
@@ -34,7 +34,8 @@ a main picture was drawn.
 #### Basic Descriptive Layers
 1) Application ----- Observer
 2) Application ----- Observer[Exporter ----- LoggingService]
-3) Application ----- Exporter ----- LoggingService[Collector ----- Classifier]
-4) Application ----- Exporter ---Log[]---> Collector ---AlalyzablClassifiereLog[]---> Classifier ---Report[]---> Client
+3) Application ----- Exporter ----- LoggingService[Collector ----- Analyzer ----- Presenter]
+4) Application ----- Exporter ----- Collector ----- Analyzer ----- Presenter[Repo ----- Server ----- API Interface]
+5) Application ----- Exporter ----- Collector ----- Analyzer ----- Repo ----- Server ----- API Interface ----- Client Dashboard
 
 #### 

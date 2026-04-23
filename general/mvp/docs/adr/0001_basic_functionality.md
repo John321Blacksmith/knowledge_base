@@ -45,3 +45,9 @@ a main picture was drawn.
 8. `StorageManager` *stores* the **reports** in a persistent database
 
 9. The **saved records** are *presented* by the `Presenter` to an external client
+
+## Usecases
+Here are the basic user stories
+1) User queries a list of all reports within a specified time;
+2) User queries a list of reports about a particular service;
+3) User queries a list of all services with critical reports;

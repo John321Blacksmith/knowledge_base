@@ -1,10 +1,10 @@
-# Log classification role is described here
+# App Observer role is described here
 
 ## Status
 Accepted | **Proposed** | Deprecated
 
 ## Context
-Here I need to clarify what kind of problems the log classification service will solve.
+Here I need to clarify what kind of problems the app observer will solve.
 Our distributed system has lots of services to be inspected for some issues. Every service
 produce logs and they are published to the stream. Then these logs are consumed by the log
 collector and stored in a dedicated database. As the logs are gathered from different services
@@ -17,7 +17,7 @@ need to look several steps forward and predict a future behaviour of the systems
 require some time and efforts.
 
 ## Decision
-Instead of administrators, the logs may be queried by a log classification agent and then
+Instead of administrators, the logs may be queried by an app observer and then
 analyzed automatically. The analyzed data is then stored in a dedicated database and presented
 to the clients. The result data already contains analyzis result for each service.
 
